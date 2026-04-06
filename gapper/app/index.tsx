@@ -1,26 +1,19 @@
 import { Text, View, Button } from "react-native";
-import { getStationInfo } from "../services/api";
-import StationCard from "../components/StationCard";
 import { useState } from "react";
+import { useRouter } from "expo-router";
 
 
 export default function Index() {
-  const [data, setData] = useState(null);
+  const router = useRouter();
 
-  const handlePress = async () => {
-    try {
-      const result = await getStationInfo('BNK')
-      setData(result)
-    } catch (error) {
-      console.log('ERROR', error)
-    }
+  async function handlePress() {
+    router.push('/station_screen/stationScreen')
   }
 
   return (
     <View>
       <Text>Get Station Info</Text>
       <Button title="Get Station Info" onPress={handlePress} />
-      {data && <StationCard data={data} />}
     </View>
   )
 }
