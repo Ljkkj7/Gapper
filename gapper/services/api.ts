@@ -6,3 +6,9 @@ export const getStationInfo = async (stationCode: string) => {
     const data = await response.json();
     return data;
 }
+
+export const getLineCodes = async () => {
+    const response = await fetch(`${BASE_URL}/get_line_codes`);
+    const data = await response.json();
+    return data;
+}
