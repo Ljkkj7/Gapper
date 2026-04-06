@@ -1,0 +1,8 @@
+
+const BASE_URL = 'http://192.168.1.209:5000';
+
+export const getStationInfo = async (stationCode: string) => {
+    const response = await fetch(`${BASE_URL}/get_station_info/${stationCode}`);
+    const data = await response.json();
+    return data;
+}
