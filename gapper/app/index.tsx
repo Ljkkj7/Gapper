@@ -5,14 +5,14 @@ import { useState } from "react";
 
 
 export default function Index() {
-  const [stationInfo, setStationInfo] = useState(null);
+  const [data, setData] = useState(null);
 
   const handlePress = async () => {
     try {
-      const data = await getStationInfo('BNK');
-      setStationInfo(data);
+      const result = await getStationInfo('BNK')
+      setData(result)
     } catch (error) {
-      console.log('ERROR', error);
+      console.log('ERROR', error)
     }
   }
 
@@ -20,7 +20,7 @@ export default function Index() {
     <View>
       <Text>Get Station Info</Text>
       <Button title="Get Station Info" onPress={handlePress} />
-      <StationCard stationInfo={stationInfo} />
+      {data && <StationCard data={data} />}
     </View>
   )
 }
