@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react'
 import { ScrollView, ActivityIndicator, Text, StyleSheet } from 'react-native'
 import StationCard, { StationData } from '../../components/StationCard'
 import { getStationInfo } from '../../services/api'
+import { useLocalSearchParams } from 'expo-router'
 
-export default function StationScreen({ stationCode = 'BNK' }) {
+export default function StationScreen() {
+    const { stationCode } = useLocalSearchParams<{ stationCode: string }>();
+    console.log(stationCode)
     const [data, setData] = useState<StationData | null>(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)

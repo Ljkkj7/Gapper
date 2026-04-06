@@ -3,10 +3,13 @@ import TrainRow from './TrainRow'
 import { LINE_COLOURS } from '../constants/colours'
 
 function PlatformSection({ platform }: { platform: Platform }) {
+
+    const trains = platform.trains || []
+
     return (
         <View style={styles.platform}>
             <Text style={styles.platformLabel}>{platform.platform}</Text>
-            {platform.trains.slice(0, 5).map((train, i) => (
+            {trains.slice(0, 5).map((train, i) => (
                 <TrainRow key={i} train={train} />
             ))}
         </View>
